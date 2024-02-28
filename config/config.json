@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "chatbox",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "fE2B3B3cgGe2gf16FCFGfg44B1EgD2dE",
+    "database": "railway",
+    "host": "viaduct.proxy.rlwy.net",
+    "dialect": "mysql"
+  }
+}
