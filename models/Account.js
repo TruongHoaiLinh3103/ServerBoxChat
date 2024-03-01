@@ -10,19 +10,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT,
             allowNull: true
         },
-        pronouns: {
+        username: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
-        company: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        location: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        user: {
+        fullname: {
             type: DataTypes.STRING,
             allowNull: false
         }

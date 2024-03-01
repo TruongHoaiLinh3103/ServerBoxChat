@@ -14,38 +14,22 @@ module.exports = {
     getUser: async (req, res) => {
         try{
             const user = req.params.user;
-            const post = await Account.findOne({where: {user: user}});
-            res.json(post);
+            const get = await Account.findOne({where: {username: user}});
+            res.json(get);
         }
         catch(error){
             res.send(error)
         }
     },
-    // post: async (req, res) => {
-    //     try {
-    //         const user = req.body.user;
-    //         const checkUser = await Account.findOne({where: {user: user }})
-    //         if(checkUser){
-    //             const account = await Account.update({...req.body, img: req.file?.path}, {where: {user: user}});
-    //             res.json(account);
-    //         }else{
-    //             const post = {...req.body, img: req.file?.path}
-    //             await Account.create(post)
-    //             res.json(post)
-    //         }
-    //     } catch (error) {
-    //         res.json({error: "Error!"})
-    //     }
-    // },
     post: async (req, res) => {
         const {img} = req.body;
         const checkIMG = await Account.findOne({where: {img: img }})
         if(checkIMG){
             try {
-                const user = req.body.user;
-                const checkUser = await Account.findOne({where: {user: user }})
+                const username = req.body.username;
+                const checkUser = await Account.findOne({where: {username: username }})
                 if(checkUser){
-                    await Account.update({...req.body, img: img}, {where: {user: user}});
+                    await Account.update({...req.body, img: img}, {where: {username: username}});
                 }else{
                     const post = {...req.body, img: img}
                     await Account.create(post)
@@ -57,15 +41,15 @@ module.exports = {
         }else{
             const image = await cloudinary.uploader.upload(img,
                 { 
-                    upload_preset: 'cluekvnq',
+                    upload_preset: 't9phy8p2',
                     allowed_formats : ['png', 'jpg', 'jpeg', 'svg', 'ico', 'jfif', 'webp'],
                 }, 
             );
             try {
-                const user = req.body.user;
-                const checkUser = await Account.findOne({where: {user: user }})
+                const username = req.body.username;
+                const checkUser = await Account.findOne({where: {username: username }})
                 if(checkUser){
-                    await Account.update({...req.body, img: image.url}, {where: {user: user}});
+                    await Account.update({...req.body, img: image.url}, {where: {username: username}});
                 }else{
                     const post = {...req.body, img: image.url}
                     await Account.create(post)

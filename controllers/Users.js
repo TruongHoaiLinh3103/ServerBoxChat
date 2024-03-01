@@ -16,11 +16,11 @@ module.exports = {
                 bcrypt.hash(password, 10).then((hash) => {
                     Users.create({
                         fullname: fullname,
-                        username: user,
+                        username: username,
                         email: email,
                         password: hash,
                     })
-                    res.json("Success!")
+                    res.json("Register successfully!")
                 })
             }
         } catch (error) {
@@ -57,12 +57,12 @@ module.exports = {
           if (!match) res.json({ error: "Wrong Password Entered!" });
           else{
             bcrypt.hash(newPassword, 10).then((hash) => {
-                usernames.update(
+                Users.update(
                   { password: hash },
                   { where: { username: username }}
                 );
             });
-            res.json({success: "SUCCESS!"})
+            res.json({success: "Password changed successfully!"})
           }
         });
     }
